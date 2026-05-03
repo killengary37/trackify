@@ -70,7 +70,7 @@ export default function CreateSubscriptionModal({
   const validateForm = () => {
     const trimmedName = name.trim();
     const numericPrice = parseFloat(price);
-    
+
     return trimmedName.length > 0 && !isNaN(numericPrice) && numericPrice > 0;
   };
 
@@ -87,7 +87,6 @@ export default function CreateSubscriptionModal({
       id: `subscription-${Date.now()}`,
       name: name.trim(),
       price: numericPrice,
-      frequency,
       category: category || 'Other',
       status: 'active',
       startDate,
