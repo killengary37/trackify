@@ -6,6 +6,7 @@ import { ClerkProvider, useAuth } from '@clerk/expo';
 import { tokenCache } from '@clerk/expo/token-cache';
 import { PostHogProvider } from 'posthog-react-native';
 import { posthog } from '../src/config/posthog';
+import { SubscriptionsProvider } from '@/contexts/SubscriptionsContext';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -59,7 +60,11 @@ function RootLayoutContent() {
   // Don't render app until both are ready
   if (!fontsLoaded || !authLoaded) return null;
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return (
+    <SubscriptionsProvider>
+      <Stack screenOptions={{ headerShown: false }} />
+    </SubscriptionsProvider>
+  );
 }
 
 export default function RootLayout() {
